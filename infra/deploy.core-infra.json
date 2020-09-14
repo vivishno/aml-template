@@ -28,6 +28,14 @@
         "existing"
       ]
     },
+    "dataLakeNewOrExisting": {
+      "type": "string",
+      "defaultValue": "existing",
+      "allowedValues": [
+        "new",
+        "existing"
+      ]
+    },
     "wsStorageAccountName": {
       "type": "string",
       "defaultValue": "[concat('sa',uniqueString(resourceGroup().id))]"
@@ -242,13 +250,6 @@
       "defaultValue": "subscribeToStorage",
       "metadata": {
         "description": "Provide a name for the Event Grid subscription for storage."
-      }
-    },
-    "storageSystemTopicName": {
-      "type": "String",
-      "defaultValue": "mystoragesystemtopic",
-      "metadata": {
-        "description": "Provide a name for the system topic."
       }
     }
   },
@@ -557,21 +558,17 @@
       }
     },
     {
-      "name": "[parameters('storageSystemTopicName')]",
-      "type": "Microsoft.EventGrid/systemTopics",
-      "apiVersion": "2020-04-01-preview",
-      "location": "[parameters('location')]",
-      "properties": {
-        "source": "[resourceId('Microsoft.Storage/storageAccounts', parameters('DataLakestorageName'))]",
-        "topicType": "Microsoft.Storage.StorageAccounts"
-      }
+       "condition": "[equals(parameters('dataLakeNewOrExisting'), 'new')]",
+       "type": "Microsoft.Storage/storageAccounts",
+       "apiVersion": "2019-05-01",
+       "name": "[parameters('DataLakestorageName')]"
     },
     {
-      "type": "Microsoft.EventGrid/systemTopics/eventSubscriptions",
+      "type": "Microsoft.Storage/storageAccounts/providers/eventSubscriptions",
       "apiVersion": "2020-04-01-preview",
-      "name": "[concat(parameters('storageSystemTopicName'), '/', parameters('storageEventSubName'))]",
+      "name": "[concat(parameters('DataLakestorageName'), '/Microsoft.EventGrid/', parameters('storageEventSubName'))]",
       "dependsOn": [
-        "[resourceId('Microsoft.EventGrid/systemTopics', parameters('storageSystemTopicName'))]"
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('DataLakestorageName'))]"
       ],
       "properties": {
         "destination": {
