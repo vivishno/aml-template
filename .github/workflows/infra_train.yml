@@ -7,7 +7,7 @@ on:
       - '.github/workflows/**' 
       - 'code/**'
       - 'infra/**'
-
+ 
 env:
   AZURE_RESOURCE_GROUP: appchange9
   STORAGE_ACCOUNT: tryvivek4
