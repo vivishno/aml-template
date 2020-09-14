@@ -9,8 +9,8 @@ on:
       - 'infra/**'
 
 env:
-  AZURE_RESOURCE_GROUP: ashkumamlignite
-  STORAGE_ACCOUNT: ACC_NAME
+  AZURE_RESOURCE_GROUP: appchange5
+  STORAGE_ACCOUNT: vivektryacc1
   
 jobs:
   deployment:
