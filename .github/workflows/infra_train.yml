@@ -9,8 +9,8 @@ on:
       - 'infra/**'
 
 env:
-  AZURE_RESOURCE_GROUP: appchange7
-  STORAGE_ACCOUNT: tryvivek1
+  AZURE_RESOURCE_GROUP: appchange8
+  STORAGE_ACCOUNT: tryvivek3
    
 jobs:
   deployment:
