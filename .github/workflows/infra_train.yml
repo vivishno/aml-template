@@ -4,13 +4,14 @@ on:
   push:
     branches: [ master ]
     paths: 
-      - 'infra/deploy.core-infra.json'
-      - 'infra/params.deploy.core-infra.json'
-      - '.github/workflows/infra_train.yml'
+      - '.github/workflows/*'
+      - 'code/*'
+      - 'infra/*'
 
 env:
   AZURE_RESOURCE_GROUP: ashkumamlignite
-
+  STORAGE_ACCOUNT: ACC_NAME
+  
 jobs:
   deployment:
     runs-on: ubuntu-latest
