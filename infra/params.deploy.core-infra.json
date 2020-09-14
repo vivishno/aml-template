@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "computeName": {
-      "value": "igniteCluster"
+      "value": "igniteCluster" 
     },
     "workspaceName": {
       "value": "igniteMlWorkspace"
