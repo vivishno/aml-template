@@ -11,7 +11,7 @@ on:
 env:
   AZURE_RESOURCE_GROUP: appchange5
   STORAGE_ACCOUNT: vivektryacc1
-  
+   
 jobs:
   deployment:
     runs-on: ubuntu-latest
