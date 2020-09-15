@@ -472,6 +472,7 @@
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
+        "[resourceId('Microsoft.Web/Sites', variables('funcAppName'))]",
         "[variables('wsStorageAccount')]",
         "[variables('keyVault')]",
         "[variables('applicationInsights')]",
@@ -539,6 +540,7 @@
       "name": "[concat(parameters('workspaceName'), '/', parameters('computeName'))]",
       "location": "[parameters('location')]",
       "dependsOn": [
+        "[resourceId('Microsoft.Web/Sites', variables('funcAppName'))]",
         "[resourceId('Microsoft.MachineLearningServices/workspaces', parameters('workspaceName'))]"
       ],
       "properties": {
@@ -568,6 +570,7 @@
       "apiVersion": "2020-04-01-preview",
       "name": "[concat(parameters('DataLakestorageName'), '/Microsoft.EventGrid/', parameters('storageEventSubName'))]",
       "dependsOn": [
+        "[resourceId('Microsoft.Web/Sites', variables('funcAppName'))]",
         "[resourceId('Microsoft.Storage/storageAccounts', parameters('DataLakestorageName'))]"
       ],
       "properties": {
