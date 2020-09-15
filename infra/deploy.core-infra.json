@@ -540,7 +540,6 @@
       "name": "[concat(parameters('workspaceName'), '/', parameters('computeName'))]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/Sites', variables('funcAppName'))]",
         "[resourceId('Microsoft.MachineLearningServices/workspaces', parameters('workspaceName'))]"
       ],
       "properties": {
@@ -571,6 +570,7 @@
       "name": "[concat(parameters('DataLakestorageName'), '/Microsoft.EventGrid/', parameters('storageEventSubName'))]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/Sites', variables('funcAppName'))]",
+        "[resourceId('Microsoft.Web/Sites/sourcecontrols', variables('funcAppName'), 'web')]",
         "[resourceId('Microsoft.Storage/storageAccounts', parameters('DataLakestorageName'))]"
       ],
       "properties": {
